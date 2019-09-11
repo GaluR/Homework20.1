@@ -19,7 +19,7 @@
     <input type="submit" value="Przelicz"><br/>
   </form>
   <h1>Przelicznik wag</h1>
-  <form action="/przelicznik" method="post">
+<form action="/przelicznikWag" method="post">
     <input type="text" name="kilo" placeholder="kilogramy"><br/>
     <input type="text" name="grams" placeholder="gramy"><br/>
     <input type="text" name="miligrams" placeholder="miligramy"><br/>
