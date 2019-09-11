@@ -27,10 +27,10 @@ public class PrzelicznikWag extends HttpServlet {
 
     private void forWeight(PrintWriter writer1, String kilo, String grams, String miligrams) {
         PrzelicznikService service = new PrzelicznikService();
-        boolean condition1 = !kilo.equals("") && !miligrams.equals("");
-        boolean condition2 = !grams.equals("") && !miligrams.equals("");
-        boolean condition3 = !grams.equals("") && !kilo.equals("");
-        if (condition1 || condition2 || condition3) {
+        boolean isTwoEmpty1 = !kilo.isEmpty() && !miligrams.isEmpty();
+        boolean isTwoEmpty2 = !grams.isEmpty() && !miligrams.isEmpty();
+        boolean isTwoEmpty3 = !grams.isEmpty() && !kilo.isEmpty();
+        if (isTwoEmpty1 || isTwoEmpty2 || isTwoEmpty3) {
             writer1.println("Nie można podać 2 lub więcej wartości jednoczenie. Wróć i wprowadż tylko jedną.");
         } else {
             if (!kilo.isEmpty()) {

@@ -18,22 +18,19 @@ public class Przelicznik extends HttpServlet {
 
         PrintWriter writer = response.getWriter();
 
-
         String meter = request.getParameter("meter");
         String centymeter = request.getParameter("centymeter");
         String milimeter = request.getParameter("milimeter");
-
-
 
             forDistance(writer, meter, centymeter, milimeter);
     }
 
     private void forDistance(PrintWriter writer, String meter, String centymeter, String milimeter) {
         PrzelicznikService service = new PrzelicznikService();
-        boolean condition1 = !meter.equals("") && !milimeter.equals("");
-        boolean condition2 = !centymeter.equals("") && !milimeter.equals("");
-        boolean condition3 = !centymeter.equals("") && !meter.equals("");
-        if (condition1 || condition2 || condition3) {
+        boolean isTwoEmpty1 = !meter.isEmpty() && !milimeter.isEmpty();
+        boolean isTwoEmpty2 = !centymeter.isEmpty() && !milimeter.isEmpty();
+        boolean isTwoEmpty3 = !centymeter.isEmpty() && !meter.isEmpty();
+        if (isTwoEmpty1 || isTwoEmpty2 || isTwoEmpty3) {
             writer.println("Nie można podać 2 lub więcej wartości jednoczenie. Wróć i wprowadż tylko jedną.");
         } else {
             if (!meter.isEmpty()) {
