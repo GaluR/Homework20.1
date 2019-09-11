@@ -27,25 +27,27 @@ public class PrzelicznikWag extends HttpServlet {
 
     private void forWeight(PrintWriter writer1, String kilo, String grams, String miligrams) {
         PrzelicznikService service = new PrzelicznikService();
-        if ((!kilo.equals("")) && !(grams.equals(""))
-                || (!kilo.equals("")) && !(miligrams.equals("")) || !miligrams.equals("") && !(grams.equals(""))) {
+        boolean condition1 = !kilo.equals("") && !miligrams.equals("");
+        boolean condition2 = !grams.equals("") && !miligrams.equals("");
+        boolean condition3 = !grams.equals("") && !kilo.equals("");
+        if (condition1 || condition2 || condition3) {
             writer1.println("Nie można podać 2 lub więcej wartości jednoczenie. Wróć i wprowadż tylko jedną.");
         } else {
-            if (!kilo.equals("")) {
+            if (!kilo.isEmpty()) {
                 double kg = Double.parseDouble(kilo);
                 writer1.println("Podana wartośc w przeliczeniu to: ");
                 writer1.println("kilogramy: " + kg + "<br/>");
                 writer1.println("gramy: " + service.kiloToGrams(kg) + "<br/>");
                 writer1.println("miligramy: " + service.kiloToMiligrams(kg) + "<br/>");
             }
-            if (!(grams.equals(""))) {
+            if (!grams.isEmpty()) {
                 double g = Double.parseDouble(grams);
                 writer1.println("Podana wartośc w przeliczeniu to: ");
                 writer1.println("kilogramy: " + service.gramsToKilo(g) + "<br/>");
                 writer1.println("gramy: " + g + "<br/>");
                 writer1.println("miligramy: " + service.gramsToMiligrams(g) + "<br/>");
             }
-            if (!(miligrams.equals(""))) {
+            if (!miligrams.isEmpty()) {
                 double mg = Double.parseDouble(miligrams);
                 writer1.println("Podana wartośc w przeliczeniu to: ");
                 writer1.println("kilogramy: " + service.miligramsToKilo(mg) + "<br/>");

@@ -30,25 +30,27 @@ public class Przelicznik extends HttpServlet {
 
     private void forDistance(PrintWriter writer, String meter, String centymeter, String milimeter) {
         PrzelicznikService service = new PrzelicznikService();
-        if ((!meter.equals("") && !(centymeter.equals(""))
-                || !meter.equals("") && !(milimeter.equals(""))) || !milimeter.equals("") && !(centymeter.equals(""))) {
+        boolean condition1 = !meter.equals("") && !milimeter.equals("");
+        boolean condition2 = !centymeter.equals("") && !milimeter.equals("");
+        boolean condition3 = !centymeter.equals("") && !meter.equals("");
+        if (condition1 || condition2 || condition3) {
             writer.println("Nie można podać 2 lub więcej wartości jednoczenie. Wróć i wprowadż tylko jedną.");
         } else {
-            if (!meter.equals("")) {
+            if (!meter.isEmpty()) {
                 double m = Double.parseDouble(meter);
                 writer.println("Podana wartośc w przeliczeniu to: ");
                 writer.println("metry: " + meter + "<br/>");
                 writer.println("centymetry: " + service.metersToCenty(m) + "<br/>");
                 writer.println("milimetry: " + service.metersToMili(m) + "<br/>");
             }
-            if (!(centymeter.equals(""))) {
+            if (!centymeter.isEmpty()) {
                 double cm = Double.parseDouble(centymeter);
                 writer.println("Podana wartośc w przeliczeniu to: ");
                 writer.println("metry: " + service.centyToMetes(cm) + "<br/>");
                 writer.println("centymetry: " + cm + "<br/>");
                 writer.println("milimetry: " + service.centyToMili(cm) + "<br/>");
             }
-            if (!(milimeter.equals(""))) {
+            if (!milimeter.isEmpty()) {
                 double mm = Double.parseDouble(milimeter);
                 writer.println("Podana wartośc w przeliczeniu to: ");
                 writer.println("metry: " + service.miliToMeters(mm) + "<br/>");
