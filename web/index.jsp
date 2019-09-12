@@ -12,14 +12,14 @@
   </head>
   <body>
   <h1>Przelicznik metryczny</h1>
-  <form action="/przelicznik" method="post">
+  <form action="/counter" method="post">
     <input type="text" name="meter" placeholder="metry"><br/>
     <input type="text" name="centymeter" placeholder="centymetry"><br/>
     <input type="text" name="milimeter" placeholder="milimetry"><br/>
     <input type="submit" value="Przelicz"><br/>
   </form>
   <h1>Przelicznik wag</h1>
-<form action="/przelicznikWag" method="post">
+<form action="/counterweights" method="post">
     <input type="text" name="kilo" placeholder="kilogramy"><br/>
     <input type="text" name="grams" placeholder="gramy"><br/>
     <input type="text" name="miligrams" placeholder="miligramy"><br/>
